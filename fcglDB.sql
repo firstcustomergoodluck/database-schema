@@ -14,10 +14,10 @@ CREATE TABLE IF NOT EXISTS item_condition (
 #Note: Might want to purge items that have not been sold in a while
 #Question: Should we add a timestamp for when it was last sold?
 CREATE TABLE IF NOT EXISTS item (
-	item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,#this is the sku
     item_price DOUBLE UNSIGNED NOT NULL,
     item_condition_id INT UNSIGNED NOT NULL,
-    Item_sku VARCHAR(20),
+    Item_upc VARCHAR(20), #We want UPC not SKU
     Item_quantity INT UNSIGNED,
     item_name VARCHAR(50) NOT NULL,
     item_description VARCHAR(100),
