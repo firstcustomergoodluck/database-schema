@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS item_condition (
 #Note: Might want to purge items that have not been sold in a while
 #Question: Should we add a timestamp for when it was last sold?
 CREATE TABLE IF NOT EXISTS item (
-	item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,#this is the sku
+    item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,#this is the sku
     item_price DOUBLE UNSIGNED NOT NULL,
     item_condition_id INT UNSIGNED NOT NULL,
     Item_upc VARCHAR(20), #We want UPC not SKU
@@ -27,20 +27,20 @@ CREATE TABLE IF NOT EXISTS item (
 
 #The e-comerce vendors where we will be selling our items (Amazon, Ebay...) 
 CREATE TABLE IF NOT EXISTS vendor (
-	vendor_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    vendor_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     vendor_name VARCHAR(30) NOT NULL,
     PRIMARY KEY (vendor_id)
 );
 
 #We don't need much information from the user because we will be using google/fb
 CREATE TABLE IF NOT EXISTS user (
-	user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (user_id)
 );
 
 #Allows for a user to have multiple addresses
 CREATE TABLE IF NOT EXISTS user_address(
-	user_address_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_address_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT UNSIGNED NOT NULL,
     user_address VARCHAR (100) NOT NULL,
     user_zipcode INT NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS user_address(
 
 #Will hold the api_id given by the login providers we us (google, facebook..)
 CREATE TABLE IF NOT EXISTS user_login (
-	user_login_id  INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_login_id  INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT UNSIGNED NOT NULL,
     login_service_id INT UNSIGNED NOT NULL,
     #TODO: See how different the API id is for services, maybe we can add a symbol
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS user_login (
 
 #Items posted on a given vendor
 CREATE TABLE IF NOT EXISTS vendor_item (
-	vendor_item_id INT UNSIGNED NOT NULL ,
+    vendor_item_id INT UNSIGNED NOT NULL ,
     item_id INT UNSIGNED NOT NULL, 
     vendor_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (vendor_item_id),
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS vendor_item (
 
 #An item a user has posted through our service
 CREATE TABLE IF NOT EXISTS user_item (
-	user_item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     item_id INT UNSIGNED NOT NULL, #foreign key
     user_id INT UNSIGNED NOT NULL, #foreign key
     vendor_item_id INT UNSIGNED NOT NULL, #foreign key
